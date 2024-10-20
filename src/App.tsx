@@ -1,5 +1,6 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
+import ImageCycler from './components/ImageCycler';
 
 function App() {
   return (
@@ -8,13 +9,11 @@ function App() {
         <NavBar />
       </GridItem>
 
-      <GridItem area="body" bg="blue">
-        {" "}
-        Main Body
+      <GridItem area="body">
+        <ImageCycler interval={5000} />
       </GridItem>
 
-      <GridItem area="footer" bg="gold">
-        {" "}
+      <GridItem area="footer" bg="red.600">
         Footer
       </GridItem>
     </Grid>

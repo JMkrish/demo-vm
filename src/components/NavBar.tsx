@@ -11,7 +11,7 @@ import vmUniversity from "../assets/vm-university.png";
 
 const NavBar = () => {
   return (
-    <HStack color="black">
+    <HStack color="black" px={10} py={2}>
       <Flex align="center" gap="12px">
         <Image src={vmUniversity} boxSize="60px" />
         <Text fontSize="2xl" color="tomato" as="b">
