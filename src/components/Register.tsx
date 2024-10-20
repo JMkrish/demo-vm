@@ -11,13 +11,15 @@ import {
   Link as ChakraLink,
   useToast,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { saveUser, findUserByEmail } from '../utils/userStorage';
 
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const toast = useToast();
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,15 +33,28 @@ const Register = () => {
       });
       return;
     }
-    // Here you would typically handle the registration logic
-    console.log('Registration attempt with:', { email, password });
+
+    const existingUser = findUserByEmail(email);
+    if (existingUser) {
+      toast({
+        title: 'Error',
+        description: 'A user with this email already exists.',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
+
+    saveUser({ email, password });
     toast({
-      title: 'Registration Attempt',
-      description: 'Registration functionality not implemented yet.',
-      status: 'info',
+      title: 'Success',
+      description: 'Registration successful. You can now log in.',
+      status: 'success',
       duration: 3000,
       isClosable: true,
     });
+    navigate('/login');
   };
 
   return (
