@@ -5,16 +5,16 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <Grid templateAreas={{ base: `"nav" "body" "footer"` }} bg="white">
-      <GridItem area="nav" bg="blue.600">
+    <Grid templateAreas={{ base: `"nav" "body" "footer"` }} bg="blue.600">
+      <GridItem area="nav">
         <NavBar />
       </GridItem>
 
-      <GridItem area="body" bg="white">
+      <GridItem area="body">
         <ImageCycler interval={5000} />
       </GridItem>
 
-      <GridItem area="footer" bg="blue.600">
+      <GridItem area="footer">
         <Footer />
       </GridItem>
     </Grid>
