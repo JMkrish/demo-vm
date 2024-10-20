@@ -1,7 +1,11 @@
 import { Grid, GridItem } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import { Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import ImageCycler from "./components/ImageCycler";
 import Footer from "./components/Footer";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 function App() {
   return (
@@ -11,7 +15,13 @@ function App() {
       </GridItem>
 
       <GridItem area="body">
-        <ImageCycler interval={5000} />
+        <Box flex="1" bg="white">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </Box>
       </GridItem>
 
       <GridItem area="footer">

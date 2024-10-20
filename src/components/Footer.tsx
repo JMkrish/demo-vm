@@ -13,7 +13,7 @@ import { footerData } from "../data/footer";
 
 const Footer = () => {
   return (
-    <Box>
+    <Box bg="blue.600" color="white">
       <Container as={Stack} maxW={"6xl"} py={10}>
         <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
           {footerData.columns.map((column, index) => (
@@ -22,7 +22,7 @@ const Footer = () => {
                 {column.title}
               </Text>
               {column.links.map((link, linkIndex) => (
-                <Link key={linkIndex} href={link.url}>
+                <Link key={linkIndex} href={link.url} color="white">
                   {link.label}
                 </Link>
               ))}

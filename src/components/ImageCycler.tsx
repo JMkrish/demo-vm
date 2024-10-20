@@ -4,8 +4,10 @@ import { Box, Image, useInterval } from "@chakra-ui/react";
 import MAIN_IMG_1 from "../assets/main1.jpg";
 import MAIN_IMG_2 from "../assets/main2.jpg";
 import MAIN_IMG_3 from "../assets/main3.jpg";
+import MAIN_IMG_4 from "../assets/main4.jpg";
+import MAIN_IMG_5 from "../assets/main1.png";
 
-const images = [MAIN_IMG_1, MAIN_IMG_2, MAIN_IMG_3];
+const images = [MAIN_IMG_1, MAIN_IMG_2, MAIN_IMG_3, MAIN_IMG_4, MAIN_IMG_5];
 
 interface ImageCyclerProps {
   interval?: number;
@@ -26,7 +28,7 @@ const ImageCycler: React.FC<ImageCyclerProps> = ({ interval = 5000 }) => {
         objectFit="cover"
         w="100%"
         h="100%"
-      />
+              />
     </Box>
   );
 };
