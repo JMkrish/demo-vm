@@ -56,6 +56,8 @@ const Register = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               borderColor="gray.300"
+              color="gray.800"
+              _placeholder={{ color: 'gray.500' }}
             />
           </FormControl>
           <FormControl id="password" isRequired mt={4}>
@@ -65,6 +67,8 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               borderColor="gray.300"
+              color="gray.800"
+              _placeholder={{ color: 'gray.500' }}
             />
           </FormControl>
           <FormControl id="confirm-password" isRequired mt={4}>
@@ -74,6 +78,8 @@ const Register = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               borderColor="gray.300"
+              color="gray.800"
+              _placeholder={{ color: 'gray.500' }}
             />
           </FormControl>
           <Button type="submit" colorScheme="blue" width="full" mt={6}>
