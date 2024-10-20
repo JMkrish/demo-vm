@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
 import { saveUser, findUserByEmail } from '../utils/userStorage';
+import { useAuth } from '../contexts/AuthContext';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -20,6 +21,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const toast = useToast();
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,14 +49,15 @@ const Register = () => {
     }
 
     saveUser({ email, password });
+    login({ email });
     toast({
       title: 'Success',
-      description: 'Registration successful. You can now log in.',
+      description: 'Registration successful. You are now logged in.',
       status: 'success',
       duration: 3000,
       isClosable: true,
     });
-    navigate('/login');
+    navigate('/');
   };
 
   return (

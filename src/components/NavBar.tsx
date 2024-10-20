@@ -9,10 +9,21 @@ import {
   Stack,
   StackDivider,
   Text,
+  Button,
 } from "@chakra-ui/react";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import vmUniversity from "../assets/vm-university.png";
+import { useAuth } from "../contexts/AuthContext";
 
 const NavBar = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
+
   return (
     <Container
       as={Stack}
@@ -25,7 +36,7 @@ const NavBar = () => {
     >
       <Stack direction={"row"} align="center">
         <Box>
-          <Link href="/" display="flex" alignItems="center">
+          <Link as={RouterLink} to="/" display="flex" alignItems="center">
             <Image src={vmUniversity} boxSize="60px" alt="VM University Logo" />
             <Text fontWeight="bold" color="tomato" ml={2}>
               VM University
@@ -38,11 +49,21 @@ const NavBar = () => {
         gap="4"
         divider={<StackDivider borderColor="white" />}
       >
-        <Link href="/">HOME</Link>
+        <Link as={RouterLink} to="/">
+          HOME
+        </Link>
         <Link href="#">COURSES</Link>
         <Link href="#">CERTIFICATES</Link>
         <Link href="#">HELP</Link>
-        <Link href="/login">LOGIN</Link>
+        {user ? (
+          <Button onClick={handleLogout} colorScheme="red">
+            LOGOUT
+          </Button>
+        ) : (
+          <Link as={RouterLink} to="/login">
+            LOGIN
+          </Link>
+        )}
       </Stack>
     </Container>
   );

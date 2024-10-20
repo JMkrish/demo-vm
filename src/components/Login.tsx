@@ -13,17 +13,20 @@ import {
 } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
 import { findUserByEmail } from '../utils/userStorage';
+import { useAuth } from '../contexts/AuthContext';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const toast = useToast();
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const user = findUserByEmail(email);
         if (user && user.password === password) {
+            login({ email: user.email });
             toast({
                 title: 'Success',
                 description: 'Login successful!',
@@ -31,8 +34,6 @@ const Login = () => {
                 duration: 3000,
                 isClosable: true,
             });
-            // Here you would typically set some sort of authentication state
-            // For demo purposes, we'll just navigate to the home page
             navigate('/');
         } else {
             toast({
