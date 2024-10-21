@@ -57,7 +57,7 @@ const Register = () => {
       duration: 3000,
       isClosable: true,
     });
-    navigate('/');
+    navigate('/profile');
   };
 
   return (

@@ -48,6 +48,7 @@ const NavBar = () => {
         direction={"row"}
         gap="4"
         divider={<StackDivider borderColor="white" />}
+        align="center"
       >
         <Link as={RouterLink} to="/">
           HOME
@@ -56,9 +57,14 @@ const NavBar = () => {
         <Link href="#">CERTIFICATES</Link>
         <Link href="#">HELP</Link>
         {user ? (
-          <Button onClick={handleLogout} colorScheme="red">
-            LOGOUT
-          </Button>
+          <>
+            <Link as={RouterLink} to="/profile">
+              PROFILE
+            </Link>
+            <Button onClick={handleLogout} colorScheme="red">
+              LOGOUT
+            </Button>
+          </>
         ) : (
           <Link as={RouterLink} to="/login">
             LOGIN

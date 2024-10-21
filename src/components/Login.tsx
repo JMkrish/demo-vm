@@ -34,7 +34,7 @@ const Login = () => {
                 duration: 3000,
                 isClosable: true,
             });
-            navigate('/');
+            navigate('/profile');
         } else {
             toast({
                 title: 'Error',
